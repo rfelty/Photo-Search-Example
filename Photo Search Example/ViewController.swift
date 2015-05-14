@@ -26,7 +26,15 @@ class ViewController: UIViewController {
                             urlArray.append(imageURLString)     //4
                         }
                     }
-                    println(urlArray)                           //5
+self.scrollView.contentSize = CGSizeMake(320, 320 * CGFloat(dataArray.count))
+                    for var i = 0; i < urlArray.count; i++ {
+                        let imageData = NSData(contentsOfURL: NSURL(string: urlArray[i])!)         //1
+                        if let imageDataUnwrapped = imageData {                                     //2
+                            let imageView = UIImageView(image: UIImage(data: imageDataUnwrapped))   //3
+                            imageView.frame = CGRectMake(0, 320 * CGFloat(i), 320, 320)               //4
+                            self.scrollView.addSubview(imageView)                                        //5
+                        }
+                    }//5
                 }
             },
             failure: { (operation: AFHTTPRequestOperation!,error: NSError!) in
