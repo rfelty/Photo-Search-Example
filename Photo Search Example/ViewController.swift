@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
         let manager = AFHTTPRequestOperationManager()
@@ -23,6 +24,16 @@ class ViewController: UIViewController {
                 println("Error: " + error.localizedDescription)
         })
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if let dataArray = responseObject["data"] as? [AnyObject] {
+            var urlArray:[String] = []                  //1
+            for dataObject in dataArray {               //2
+                if let imageURLString = dataObject.valueForKeyPath("images.standard_resolution.url") as? String { //3
+                    urlArray.append(imageURLString)     //4
+                }
+            }
+            println(urlArray)                           //5
+        }
     }
 
     override func didReceiveMemoryWarning() {
