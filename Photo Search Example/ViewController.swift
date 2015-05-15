@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
 
+class ViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
