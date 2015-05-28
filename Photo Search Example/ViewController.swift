@@ -31,6 +31,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
                             urlArray.append(imageURLString)
                         }
                     }
+
+                    
                     //display urlArray in ScrollView
                     let imageWidth = self.view.frame.width
                     self.scrollView.contentSize = CGSizeMake(imageWidth, imageWidth * CGFloat(dataArray.count))
@@ -55,6 +57,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
         }
         searchBar.resignFirstResponder()
         searchInstagramByHashtag(searchBar.text)
+            // check the resulting text. Return NO if not allowed
+        }
         
     }
-}
