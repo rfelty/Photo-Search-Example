@@ -58,6 +58,16 @@ class ViewController: UIViewController, UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchInstagramByHashtag(searchBar.text)
             // check the resulting text. Return NO if not allowed
+    }
+    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        println(text)
+        if (text == " " || text == ",") {
+            var alert = UIAlertController(title: "Sorry", message: "Only one seach term!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return false
         }
+        return true
+    }
         
     }
